@@ -1,5 +1,5 @@
 -- Neovide settings
-vim.g.neovide_scale_factor = 0.6
+vim.g.neovide_scale_factor = 1.0
 vim.g.neovide_floating_blur_amount_x = 2.0
 vim.g.neovide_floating_blur_amount_y = 2.0
 vim.g.neovide_transparency = 0.8
