@@ -10,7 +10,6 @@ local ensure_packer = function()
 end
 
 local packer_bootstrap = ensure_packer()
-
 return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
 
@@ -22,13 +21,7 @@ return require('packer').startup(function(use)
 
     -- TODO: use { "nvim-telescope/telescope-file-browser.nvim" }
 
-    use({
-        "catppuccin/nvim",
-        as = "catppuccin",
-        config = function()
-            vim.cmd('colorscheme catppuccin-mocha')
-        end
-    })
+    use "rebelot/kanagawa.nvim"
 
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
     use('theprimeagen/harpoon')
@@ -61,7 +54,6 @@ return require('packer').startup(function(use)
     }
     use {
         'lewis6991/gitsigns.nvim',
-        -- tag = 'release' -- To use the latest release (do not use this if you run Neovim nightly or dev builds!)
     }
     use {
         "windwp/nvim-autopairs",
@@ -69,7 +61,20 @@ return require('packer').startup(function(use)
     }
     use('jose-elias-alvarez/null-ls.nvim')
     use('MunifTanjim/prettier.nvim')
-    -- use { 'glepnir/dashboard-nvim' }
+    use {
+        'glepnir/dashboard-nvim',
+        event = 'VimEnter',
+        config = function()
+            require('dashboard').setup {
+                theme = 'hyper',
+                config = {
+                    packages = {enable = true},
+                    mru = { limit = 10, icon = 'icon', label = ''}
+                },
+            }
+        end,
+        requires = { 'nvim-tree/nvim-web-devicons' }
+    }
 
     use 'nvim-tree/nvim-web-devicons'
     use {
