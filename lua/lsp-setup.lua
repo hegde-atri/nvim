@@ -72,7 +72,6 @@ local servers = {
   gopls = {},
   pyright = {},
   rust_analyzer = {},
-  tailwindcss_language_server = {},
   tsserver = {},
   html = { filetypes = { 'html', 'twig', 'hbs' } },
 
