@@ -3,6 +3,6 @@ if vim.g.neovide then
   vim.o.guifont = "MonoLisa Nerd Font:h13" -- text below applies for VimScript
   vim.g.neovide_transparency = 0.9
   vim.g.neovide_cursor_animate_in_insert_mode = true
-  vim.g.neovide_cursor_animation_length = 0.1
+  vim.g.neovide_cursor_animation_length = 0.07
   vim.g.neovide_cursor_vfx_mode = "pixiedust"
 end
