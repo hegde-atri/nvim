@@ -143,9 +143,7 @@ require('lazy').setup({
   },
 
   -- {
-  --   -- Add indentation guides even on blank lines
-  --   'lukas-reineke/indent-blankline.nvim',
-  --   -- Enable `lukas-reineke/indent-blankline.nvim`
+  --   -- Add indentation guides even on blank lines 'lukas-reineke/indent-blankline.nvim', -- Enable `lukas-reineke/indent-blankline.nvim`
   --   -- See `:help ibl`
   --   main = 'ibl',
   --   opts = {},
@@ -192,7 +190,6 @@ require('lazy').setup({
   --       Uncomment any of the lines below to enable them.
   require 'kickstart.plugins.autoformat',
   require 'kickstart.plugins.debug',
-  -- require 'telescope'.load_extension('project'),
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    You can use this folder to prevent any conflicts with this init.lua if you're interested in keeping
@@ -286,7 +283,7 @@ require('telescope').setup {
   extensions = {
     project = {
       base_dirs = {
-        { "~/repos", max_depth = 2 },
+        { "~/repos/", max_depth = 3 },
       }
     }
   }
@@ -345,9 +342,26 @@ vim.keymap.set('n', '<leader>/', function()
   })
 end, { desc = '[/] Fuzzily search in current buffer' })
 
--- vim.keymap.set('n', '<leader>gf', require('telescope.builtin').git_files, { desc = 'Search [G]it [F]iles' })
+-- Buffer keymaps
+
+
+-- Project keymaps
+vim.api.nvim_set_keymap(
+  'n',
+  '<leader>pp',
+  ":lua require'telescope'.extensions.project.project{}<CR>",
+  { noremap = true, silent = true }
+)
+
+-- File keymaps
+
+
+-- Search keymaps
+
+
+-- vim.keymap.set('n', '<leader>pp', require('telescope').extensions.project.project {}, { desc = 'Find files' })
 vim.keymap.set('n', '<leader>ff', require('telescope.builtin').git_files, { desc = 'Find files' })
--- vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
+vim.keymap.set('n', '<leader>.', require('telescope.builtin').git_files, { desc = 'Find files' })
 vim.keymap.set('n', '<leader>fa', require('telescope.builtin').find_files, { desc = 'Find all files' })
 vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
